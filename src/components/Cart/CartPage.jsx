@@ -4,22 +4,152 @@ import { useSelector, useDispatch } from "react-redux";
 import { decrement, increment } from "../../redux/actions/cart";
 import { Link } from "react-router-dom";
 
+const CartPage = () => {
+  const c = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+  return (
+    <>
+      <h1
+        style={{
+          margin: "auto",
+          marginTop: "100px",
+          marginBottom: "30px",
+          width: "100vw",
+          textAlign: "center",
+        }}
+      >
+        Your Bag
+      </h1>
+      <CartGrid>
+        {c.length !== 0 && (
+          <>
+            <CartItems>
+              {c.map((item, index) => (
+                <CartItem key={index}>
+                  <Card>
+                    <img src={item.assets[0].url} alt="" />
+                    <h1>{item.name}</h1>
+                  </Card>
+                  <Functions>
+                    <Button
+                      onClick={() => {
+                        dispatch(increment(item.id));
+                      }}
+                    >
+                      +
+                    </Button>
+                    <h1> {item.quantity}</h1>
+                    <Button
+                      onClick={() => {
+                        dispatch(decrement(item.id, item.quantity));
+                      }}
+                    >
+                      -
+                    </Button>
+                  </Functions>
+                  <Price>$ {item.quantity * item.price.raw}</Price>
+                </CartItem>
+              ))}
+            </CartItems>
+            <Checkout>
+              <Span>
+                <h3>Total Price </h3>
+                <h3>
+                  ${" "}
+                  {c.reduce(
+                    (item1, item2) =>
+                      item1.price.raw * item1.quantity +
+                      item2.price.raw * item2.quantity
+                  )}
+                </h3>
+              </Span>
+              <Span>
+                <h3>Applied discount</h3>
+                <h3>20%</h3>
+              </Span>
+              <Span>
+                <h3>Delivery Charges </h3>
+                <h3>$ 5</h3>
+              </Span>
+              <Span>
+                <h3>Final Price</h3>
+                <h3>
+                  ${" "}
+                  {(c.reduce(
+                    (item1, item2) =>
+                      item1.price.raw * item1.quantity +
+                      item2.price.raw * item2.quantity
+                  ) /
+                    100) *
+                    80 +
+                    5}
+                </h3>
+              </Span>
+              <Span style={{ justifyContent: "center", marginTop: "100px" }}>
+                <Link to="/checkout">
+                  <Button2>Checkout</Button2>
+                </Link>
+              </Span>
+            </Checkout>
+          </>
+        )}
+      </CartGrid>
+    </>
+  );
+};
+const CartGrid = styled.div`
+  margin: auto;
+  width: 90vw;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+`;
+
+const Span = styled.span`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+`;
+const Button2 = styled.button`
+  min-width: 50px;
+  height: fit-content;
+  width: fit-content;
+  padding: 10px;
+  background-color: #1a1a1a;
+  font-size: 1.1em;
+  font-weight: 500;
+  border-radius: 5px;
+  bottom: 0;
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+`;
+
+const Checkout = styled.div`
+  width: auto;
+  height: 90vh;
+  min-width: 30vw;
+  margin: auto;
+  box-shadow: rgba(71, 71, 75, 0.25) 0px 30px 60px -20px,
+    rgba(58, 58, 58, 0.3) 0px 30px 60px -30px;
+  padding: 40px;
+`;
+
 const CartItems = styled.div`
   width: 100%;
-  height: 100%;
+  max-width: 50vw;
+  height: 90vh;
   display: flex;
   flex-direction: column;
-  > h1 {
-    align-self: center;
-    margin-bottom: 30px;
-  }
+  margin: auto;
+  overflow-y: scroll;
 `;
 const CartItem = styled.div`
   margin: 20px;
-  /* border: 1px solid black; */
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-  height: 400px;
+  box-shadow: rgba(71, 71, 75, 0.25) 0px 30px 60px -20px,
+    rgba(58, 58, 58, 0.3) 0px 30px 60px -30px;
+  min-height: 400px;
+  max-width: 50vw;
   display: flex;
   margin-bottom: 30px;
 `;
@@ -46,6 +176,7 @@ const Button = styled.button`
   margin: 10px;
   cursor: pointer;
   padding: 10px;
+  font-size: 1.4em;
 `;
 
 const Card = styled.div`
@@ -65,46 +196,5 @@ const Card = styled.div`
     margin-right: 30px;
   }
 `;
-
-const CartPage = () => {
-  const c = useSelector((state) => state.cart);
-  const dispatch = useDispatch();
-  return (
-    <>
-      <CartItems>
-        <h1>Your Cart</h1>
-        {c.length === 0 && <div> No Items are added</div>}
-        {c.map((item, index) => (
-          <CartItem key={index}>
-            <Card>
-              <img src={item.assets[0].url} alt="" />
-              <h1>{item.name}</h1>
-            </Card>
-            <Functions>
-              <Button
-                onClick={() => {
-                  dispatch(increment(item.id));
-                }}
-              >
-                <h1>+</h1>
-              </Button>
-
-              <h1> {item.quantity}</h1>
-              <Button
-                onClick={() => {
-                  dispatch(decrement(item.id, item.quantity));
-                }}
-              >
-                <h1>-</h1>
-              </Button>
-            </Functions>
-            <Price>₹ {item.quantity * item.price.raw}</Price>
-          </CartItem>
-        ))}
-      </CartItems>
-      <Link to="/checkout">Checkout</Link>
-    </>
-  );
-};
 
 export default CartPage;

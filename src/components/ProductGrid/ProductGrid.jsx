@@ -37,7 +37,7 @@ const ProductGrid = (props) => {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <AnimatePresence exitBeforeEnter>
+              <AnimatePresence>
                 {products.map((product) => (
                   <Card key={product.id}>
                     <Link

@@ -149,9 +149,7 @@ const Model = () => {
       <div className="detailed-information">
         <div className="container">
           <div className="row">
-            <h2 className="title">
-              A fresh apporoach to <br /> Shopping.
-            </h2>
+            <h2 className="title"></h2>
           </div>
         </div>
       </div>
