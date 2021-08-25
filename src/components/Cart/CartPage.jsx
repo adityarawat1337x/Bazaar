@@ -135,28 +135,34 @@ const Checkout = styled.div`
   height: 90vh;
   min-width: 30vw;
   margin: auto;
-  box-shadow: rgba(71, 71, 75, 0.25) 0px 30px 60px -20px,
-    rgba(58, 58, 58, 0.3) 0px 30px 60px -30px;
+  border-radius: 50px;
+  box-shadow: 25px 25px 62px #bebebe, -25px -25px 62px #dfdfdf;
   padding: 40px;
   @media only screen and (max-width: 600px) {
     position: fixed;
     bottom: 0;
+    max-height: 200px;
+    transform: translateY(-100%);
   }
 `;
 
 const CartItems = styled.div`
   width: 100%;
   max-width: 50vw;
+  padding: 20px;
   height: 90vh;
   display: flex;
   flex-direction: column;
   margin: auto;
   overflow-y: scroll;
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+  }
 `;
 const CartItem = styled.div`
   margin: 20px;
-  box-shadow: rgba(71, 71, 75, 0.25) 0px 30px 60px -20px,
-    rgba(58, 58, 58, 0.3) 0px 30px 60px -30px;
+  border-radius: 50px;
+  box-shadow: 10px 10px 52px #bebebe, -10px -10px 52px #dfdfdf;
   min-height: 400px;
   max-width: 50vw;
   display: flex;
