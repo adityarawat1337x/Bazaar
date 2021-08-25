@@ -58,8 +58,10 @@ const CartPage = () => {
                   ${" "}
                   {c.reduce(
                     (item1, item2) =>
-                      item1.price.raw * item1.quantity +
-                      item2.price.raw * item2.quantity
+                      item1 &&
+                      item1.price.raw * item1.quantity + item2 &&
+                      item2.price.raw * item2.quantity,
+                    0
                   )}
                 </h3>
               </Span>
@@ -77,8 +79,10 @@ const CartPage = () => {
                   ${" "}
                   {(c.reduce(
                     (item1, item2) =>
-                      item1.price.raw * item1.quantity +
-                      item2.price.raw * item2.quantity
+                      item1 &&
+                      item1.price.raw * item1.quantity + item2 &&
+                      item2.price.raw * item2.quantity,
+                    0
                   ) /
                     100) *
                     80 +
@@ -110,6 +114,7 @@ const Span = styled.span`
   width: 100%;
   justify-content: space-between;
 `;
+
 const Button2 = styled.button`
   min-width: 50px;
   height: fit-content;
@@ -133,6 +138,10 @@ const Checkout = styled.div`
   box-shadow: rgba(71, 71, 75, 0.25) 0px 30px 60px -20px,
     rgba(58, 58, 58, 0.3) 0px 30px 60px -30px;
   padding: 40px;
+  @media only screen and (max-width: 600px) {
+    position: fixed;
+    bottom: 0;
+  }
 `;
 
 const CartItems = styled.div`
