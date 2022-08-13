@@ -39,6 +39,15 @@ export default function Header(props) {
           </Title>
           <List>
             <Category>
+              <Link style={{ color: "unset", textDecoration: "none" }} to="/">
+                <img
+                  style={{ width: "30px", height: "30px" }}
+                  src={favicon}
+                  alt=""
+                />
+              </Link>
+            </Category>
+            <Category>
               <Link
                 style={{ color: "unset", textDecoration: "none" }}
                 to="/men"
@@ -109,7 +118,7 @@ const NavContainer = styled(motion.div)`
   @media only screen and (max-width: 600px) {
     background-color: #1a1a1a;
     color: white;
-    top: -20px;
+    top: -10px;
     height: 120px;
   }
 `

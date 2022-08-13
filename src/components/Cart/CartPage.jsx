@@ -102,6 +102,7 @@ const CartPage = () => {
     </>
   )
 }
+
 const CartGrid = styled.div`
   margin: auto;
   height: auto;
@@ -142,32 +143,35 @@ const Checkout = styled.div`
 `
 
 const CartItems = styled.div`
-  padding: 20px;
   display: flex;
   flex-direction: column;
   margin: auto;
   overflow-y: scroll;
   height: 90vh;
 `
+
 const CartItem = styled.div`
-  margin: 20px;
-  box-shadow: 10px 10px 52px #bebebe, -10px -10px 52px #dfdfdf;
+  margin: 10px;
   display: flex;
   flex-direction: column;
   margin-bottom: 30px;
+  border-top: 2px solid #9d9d9d;
 `
+
 const Functions = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 `
+
 const Price = styled.h1`
   display: flex;
   width: 200px;
   align-items: center;
   justify-content: center;
 `
+
 const Button = styled.button`
   height: 50px;
   width: 50px;
