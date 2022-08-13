@@ -79,14 +79,6 @@ export default function Header(props) {
                 Cart
               </Link>
             </Category>
-            <Category>
-              <Link
-                style={{ color: "unset", textDecoration: "none" }}
-                to="/history"
-              >
-                Order
-              </Link>
-            </Category>
           </List>
         </NavContainer>
       </HideOnScroll>

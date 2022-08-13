@@ -70,8 +70,7 @@ const CartPage = () => {
                 </h3>
               </Span>
               <Span>
-                <h3>Applied discount</h3>
-                <h3>20%</h3>
+                <h3>Applied discount</h3> <h3>20%</h3>
               </Span>
               <Span>
                 <h3>Delivery Charges </h3>
@@ -89,7 +88,7 @@ const CartPage = () => {
                     5}
                 </h3>
               </Span>
-              <Span style={{ justifyContent: "center", marginTop: "100px" }}>
+              <Span style={{ justifyContent: "center", marginTop: "50px" }}>
                 <Link to="/checkout">
                   <Button2>Checkout</Button2>
                 </Link>
@@ -106,6 +105,7 @@ const CartGrid = styled.div`
   height: auto;
   display: flex;
   flex-direction: row;
+  align-items: top;
   @media (max-width: 658px) {
     flex-direction: column;
   }
@@ -133,7 +133,7 @@ const Button2 = styled.button`
 `
 
 const Checkout = styled.div`
-  min-width: 40vw;
+  min-width: 400px;
   margin: auto;
   box-shadow: 25px 25px 62px #bebebe, -25px -25px 62px #dfdfdf;
   padding: 40px;
@@ -181,10 +181,9 @@ const Card = styled.div`
   display: flex;
   margin: 30px;
   > h1 {
-    font-size: 25px;
-    border-bottom: 1px #fff solid;
+    font-size: 20px;
   }
-  img {
+  > img {
     width: 100px;
     height: 100px;
     object-fit: cover;
