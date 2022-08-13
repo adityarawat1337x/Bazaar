@@ -1,14 +1,14 @@
-import { useState } from "react";
-import Spinner from "../../lib/Spinner";
-import { addToCart } from "../../redux/actions/cart";
-import { useDispatch, useSelector } from "react-redux";
+import { React, useState } from "react"
+import Spinner from "../../lib/Spinner"
+import { addToCart } from "../../redux/actions/cart"
+import { useDispatch, useSelector } from "react-redux"
 
 export default function ProductPage() {
-  const [cartCount, setCartCount] = useState(0);
+  const [cartCount, setCartCount] = useState(0)
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const products = useSelector((state) => state.products);
+  const products = useSelector((state) => state.products)
 
   return (
     <>
@@ -28,7 +28,7 @@ export default function ProductPage() {
                   onClick={(e) => {
                     document.querySelector(
                       ".productImg"
-                    ).style.backgroundImage = e.target.style.backgroundImage;
+                    ).style.backgroundImage = e.target.style.backgroundImage
                   }}
                 ></div>
               ))}
@@ -64,8 +64,8 @@ export default function ProductPage() {
                   <div
                     className="counter pDataC-btn"
                     onClick={() => {
-                      if (cartCount <= 1) return;
-                      setCartCount(cartCount - 1);
+                      if (cartCount <= 1) return
+                      setCartCount(cartCount - 1)
                     }}
                   >
                     -
@@ -74,7 +74,7 @@ export default function ProductPage() {
                   <div
                     className="counter pDataC-btn"
                     onClick={() => {
-                      setCartCount(cartCount + 1);
+                      setCartCount(cartCount + 1)
                     }}
                   >
                     +
@@ -117,5 +117,5 @@ export default function ProductPage() {
         </div>
       )}
     </>
-  );
+  )
 }

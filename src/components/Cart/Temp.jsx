@@ -4,17 +4,47 @@ import { useSelector, useDispatch } from "react-redux"
 import { decrement, increment } from "../../redux/actions/cart"
 import { Link } from "react-router-dom"
 
-const CartPage = () => {
-  const c = useSelector((state) => state.cart)
+const Temp = () => {
+  // const c = useSelector((state) => state.cart)
+  let c = [
+    {
+      name: "bandar",
+      assets: [
+        {
+          url: "https://cdn.codechef.com/download/banner/1660219395.jpg",
+        },
+      ],
+      price: {
+        raw: 100,
+      },
+      quantity: 1,
+    },
+    {
+      name: "dog",
+      assets: [
+        {
+          url: "https://cdn.codechef.com/download/banner/1660219395.jpg",
+        },
+      ],
+      price: {
+        raw: 100,
+      },
+      quantity: 1,
+    },
+    {
+      name: "cat",
+      assets: [
+        {
+          url: "https://cdn.codechef.com/download/banner/1660219395.jpg",
+        },
+      ],
+      price: {
+        raw: 100,
+      },
+      quantity: 1,
+    },
+  ]
   const dispatch = useDispatch()
-  if (c.length !== 0) {
-    console.log(
-      c.reduce((total, item1) => {
-        console.log(item1.price.raw, item1.quantity)
-        return (total += item1.price.raw * item1.quantity)
-      }, 0)
-    )
-  }
   return (
     <>
       <h1
@@ -64,13 +94,17 @@ const CartPage = () => {
                 <h3>Total Price </h3>
                 <h3>
                   ${" "}
-                  {c.reduce((total, item1) => {
-                    return (total += item1.price.raw * item1.quantity)
-                  }, 0)}
+                  {c.reduce(
+                    (item1, item2) =>
+                      item1 &&
+                      item1.price.raw * item1.quantity + item2 &&
+                      item2.price.raw * item2.quantity,
+                    0
+                  )}
                 </h3>
               </Span>
               <Span>
-                <h3>Applied discount</h3>
+                <h3>Applied Discount </h3>
                 <h3>20%</h3>
               </Span>
               <Span>
@@ -81,9 +115,13 @@ const CartPage = () => {
                 <h3>Final Price</h3>
                 <h3>
                   ${" "}
-                  {(c.reduce((total, item1) => {
-                    return (total += item1.price.raw * item1.quantity)
-                  }, 0.0) /
+                  {(c.reduce(
+                    (item1, item2) =>
+                      item1 &&
+                      item1.price.raw * item1.quantity + item2 &&
+                      item2.price.raw * item2.quantity,
+                    0
+                  ) /
                     100) *
                     80 +
                     5}
@@ -153,12 +191,14 @@ const CartItem = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 30px;
+  border: 2px solid black;
 `
 const Functions = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  border: 2px solid black;
 `
 const Price = styled.h1`
   display: flex;
@@ -180,6 +220,7 @@ const Button = styled.button`
 const Card = styled.div`
   display: flex;
   margin: 30px;
+  border: 2px solid black;
   > h1 {
     font-size: 25px;
     border-bottom: 1px #fff solid;
@@ -192,4 +233,4 @@ const Card = styled.div`
   }
 `
 
-export default CartPage
+export default Temp

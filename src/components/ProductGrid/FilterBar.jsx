@@ -1,49 +1,45 @@
-import React, { useEffect } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import { FormControl, InputLabel, MenuItem } from "@material-ui/core/";
-import Select from "@material-ui/core/Select";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react"
+import { makeStyles } from "@material-ui/core/styles"
+import { FormControl, InputLabel, MenuItem } from "@material-ui/core/"
+import Select from "@material-ui/core/Select"
+import { useSelector } from "react-redux"
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 120,
+    minWidth: 90,
   },
-}));
-
-// product.category[0].name gender
-// product.category[1].name itemtype
-// product.price.raw price
+}))
 
 export default function Filterbar(props) {
-  const productsData = useSelector((state) => state.products);
+  const productsData = useSelector((state) => state.products)
 
-  const { setProducts } = props;
+  const { setProducts } = props
 
-  const classes = useStyles();
-  const [itemType, setItemType] = React.useState(props.filters[0]);
-  const [itemType2, setItemType2] = React.useState(props.filters[1]);
-  const [price, setPrice] = React.useState(props.filters[2]);
+  const classes = useStyles()
+  const [itemType, setItemType] = React.useState(props.filters[0])
+  const [itemType2, setItemType2] = React.useState(props.filters[1])
+  const [price, setPrice] = React.useState(props.filters[2])
 
   const handleChange = (event) => {
-    setItemType(event.target.value);
-  };
+    setItemType(event.target.value)
+  }
   const handleChange2 = (event) => {
-    setItemType2(event.target.value);
-  };
+    setItemType2(event.target.value)
+  }
   const handleChange3 = (event) => {
-    setPrice(event.target.value);
-  };
+    setPrice(event.target.value)
+  }
 
   useEffect(() => {
     if (productsData[0]) {
       if (itemType === "Type" && itemType2 === "Type") {
-        setProducts(productsData);
-        return;
+        setProducts(productsData)
+        return
       } else {
-        let filteredProducts = [];
+        let filteredProducts = []
         productsData.forEach((product) => {
-          console.log(price);
+          console.log(price)
           if (
             product.price.raw >= Number(price.split(" ")[0]) &&
             product.price.raw <= Number(price.split(" ")[2])
@@ -57,29 +53,29 @@ export default function Filterbar(props) {
                   product.categories[1].name === itemType2) ||
                   product.categories[0].name === itemType2)
               )
-                filteredProducts.push(product);
+                filteredProducts.push(product)
             } else if (itemType === "Type") {
               if (
                 product.categories[0].name === itemType2 ||
                 (product.categories[1] &&
                   product.categories[1].name === itemType2)
               )
-                filteredProducts.push(product);
+                filteredProducts.push(product)
             } else {
               if (
                 product.categories[0].name === itemType ||
                 (product.categories[1] &&
                   product.categories[1].name === itemType)
               )
-                filteredProducts.push(product);
+                filteredProducts.push(product)
             }
           }
-        });
-        if (!filteredProducts[0]) setProducts(["No data found"]);
-        else setProducts(filteredProducts);
+        })
+        if (!filteredProducts[0]) setProducts(["No data found"])
+        else setProducts(filteredProducts)
       }
     }
-  }, [itemType, itemType2, price, productsData, setProducts]);
+  }, [itemType, itemType2, price, productsData, setProducts])
 
   return (
     <div>
@@ -136,5 +132,5 @@ export default function Filterbar(props) {
         </Select>
       </FormControl>
     </div>
-  );
+  )
 }

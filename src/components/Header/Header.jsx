@@ -1,21 +1,21 @@
-import React from "react";
-import styled from "styled-components";
-import useScrollTrigger from "@material-ui/core/useScrollTrigger";
-import Slide from "@material-ui/core/Slide";
-import { Link } from "react-router-dom";
-import CartModal from "./CartModal";
-import favicon from "../../favicon.svg";
-import { motion } from "framer-motion";
+import React from "react"
+import styled from "styled-components"
+import useScrollTrigger from "@material-ui/core/useScrollTrigger"
+import Slide from "@material-ui/core/Slide"
+import { Link } from "react-router-dom"
+import CartModal from "./CartModal"
+import favicon from "../../favicon.svg"
+import { motion } from "framer-motion"
 
 function HideOnScroll(props) {
-  const { children, window } = props;
-  const trigger = useScrollTrigger({ target: window ? window() : undefined });
+  const { children, window } = props
+  const trigger = useScrollTrigger({ target: window ? window() : undefined })
 
   return (
     <Head appear={false} direction="down" in={!trigger}>
       {children}
     </Head>
-  );
+  )
 }
 
 export default function Header(props) {
@@ -50,14 +50,6 @@ export default function Header(props) {
             <Category>
               <Link
                 style={{ color: "unset", textDecoration: "none" }}
-                to="/new"
-              >
-                New
-              </Link>
-            </Category>
-            <Category>
-              <Link
-                style={{ color: "unset", textDecoration: "none" }}
                 to="/men"
               >
                 Men
@@ -82,17 +74,17 @@ export default function Header(props) {
             <Category>
               <Link
                 style={{ color: "unset", textDecoration: "none" }}
-                to="/history"
+                to="/cart"
               >
-                Order
+                Cart
               </Link>
             </Category>
             <Category>
               <Link
                 style={{ color: "unset", textDecoration: "none" }}
-                to="/cart"
+                to="/history"
               >
-                Cart
+                Order
               </Link>
             </Category>
           </List>
@@ -102,7 +94,7 @@ export default function Header(props) {
         <CartModal />
       </CategoryCart>
     </>
-  );
+  )
 }
 
 const Head = styled(Slide)`
@@ -118,7 +110,7 @@ const Head = styled(Slide)`
     margin-top: 0px;
   }
   */
-`;
+`
 
 const NavContainer = styled(motion.div)`
   z-index: 1000;
@@ -136,19 +128,19 @@ const NavContainer = styled(motion.div)`
     height: 150px;
     top: -10px;
   }
-`;
+`
 
 const List = styled.ul`
   display: flex;
   transition: 0.6;
   flex-direction: row;
   color: inherit;
-`;
+`
 
 const Title = styled.h1`
   margin-top: 40px;
   transition: 0.6;
-`;
+`
 
 const Category = styled.li`
   list-style: none;
@@ -157,7 +149,7 @@ const Category = styled.li`
   margin: -20px 10px 30px 10px;
   text-decoration: none;
   color: inherit;
-`;
+`
 
 const CategoryCart = styled(Category)`
   position: fixed;
@@ -168,4 +160,4 @@ const CategoryCart = styled(Category)`
   @media only screen and (max-width: 600px) {
     display: none;
   }
-`;
+`

@@ -1,15 +1,17 @@
-import React from "react";
-import { Route, Switch, useLocation } from "react-router-dom";
-import CartPage from "./components/Cart/CartPage";
-import Landing from "./components/LandingPage/Landing";
-import ProductGrid from "./components/ProductGrid/ProductGrid";
-import OrderHistory from "./components/OrderHistory/OrderHistory";
-import "./asdw.css";
-import { motion, AnimatePresence } from "framer-motion";
-import ProductPage from "./components/ProductPage/ProductPage";
+import React from "react"
+import { Route, Switch, useLocation } from "react-router-dom"
+import CartPage from "./components/Cart/CartPage"
+import Landing from "./components/LandingPage/Landing"
+import ProductGrid from "./components/ProductGrid/ProductGrid"
+import OrderHistory from "./components/OrderHistory/OrderHistory"
+import "./asdw.css"
+import { motion, AnimatePresence } from "framer-motion"
+import ProductPage from "./components/ProductPage/ProductPage"
+import Checkout from "./components/Payment/Checkout"
+import Temp from "./components/Cart/Temp"
 
 const Routes = () => {
-  let location = useLocation();
+  let location = useLocation()
 
   return (
     <AnimatePresence exitBeforeEnter>
@@ -114,12 +116,23 @@ const Routes = () => {
             <CartPage />
           </motion.div>
         </Route>
+        <Route path="/checkout" exact>
+          <motion.div
+            initial={{ opacity: 0, y: -200 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 200 }}
+            transition={{ duration: 0.2 }}
+          >
+            <Checkout />
+          </motion.div>
+        </Route>
         <Route>
-          <div>404 NOT Found</div>
+          <Temp />
+          {/* <div>404 NOT Found</div> */}
         </Route>
       </Switch>
     </AnimatePresence>
-  );
-};
+  )
+}
 
-export default Routes;
+export default Routes
