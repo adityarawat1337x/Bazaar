@@ -80,12 +80,14 @@ const CartPage = () => {
                 <h3>Final Price</h3>
                 <h3>
                   ${" "}
-                  {(c.reduce((total, item1) => {
-                    return (total += item1.price.raw * item1.quantity)
-                  }, 0.0) /
-                    100) *
-                    80 +
-                    5}
+                  {Math.round(
+                    (c.reduce((total, item1) => {
+                      return (total += item1.price.raw * item1.quantity)
+                    }, 0.0) /
+                      100) *
+                      80 +
+                      5
+                  )}
                 </h3>
               </Span>
               <Span style={{ justifyContent: "center", marginTop: "50px" }}>
@@ -133,7 +135,7 @@ const Button2 = styled.button`
 `
 
 const Checkout = styled.div`
-  min-width: 400px;
+  min-width: 350px;
   margin: auto;
   box-shadow: 25px 25px 62px #bebebe, -25px -25px 62px #dfdfdf;
   padding: 40px;

@@ -39,15 +39,6 @@ export default function Header(props) {
           </Title>
           <List>
             <Category>
-              <Link style={{ color: "unset", textDecoration: "none" }} to="/">
-                <img
-                  style={{ width: "30px", height: "30px" }}
-                  src={favicon}
-                  alt=""
-                />
-              </Link>
-            </Category>
-            <Category>
               <Link
                 style={{ color: "unset", textDecoration: "none" }}
                 to="/men"
@@ -63,6 +54,7 @@ export default function Header(props) {
                 Women
               </Link>
             </Category>
+
             <Category>
               <Link
                 style={{ color: "unset", textDecoration: "none" }}
@@ -108,24 +100,24 @@ const NavContainer = styled(motion.div)`
   z-index: 1000;
   position: fixed;
   display: flex;
+  flex-direction: column;
   width: 100%;
-  height: 100px;
+  height: 150px;
   background-image: linear-gradient(#000000a6, transparent);
   align-items: center;
   justify-content: center;
-  flex-direction: column;
   @media only screen and (max-width: 600px) {
     background-color: #1a1a1a;
     color: white;
-    height: 150px;
-    top: -10px;
+    top: -20px;
+    height: 120px;
   }
 `
 
 const List = styled.ul`
+  padding: 0;
   display: flex;
   transition: 0.6;
-  flex-direction: row;
   color: inherit;
 `
 
@@ -135,10 +127,12 @@ const Title = styled.h1`
 `
 
 const Category = styled.li`
+  padding: 0;
   list-style: none;
   transition: 0.6;
   font-size: 1.2em;
-  margin: -20px 10px 30px 10px;
+  margin: 10px;
+  margin-top: -20px;
   text-decoration: none;
   color: inherit;
 `
