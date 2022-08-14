@@ -6,6 +6,10 @@ import { Link } from "react-router-dom"
 import CartModal from "./CartModal"
 import favicon from "../../favicon.svg"
 import { motion } from "framer-motion"
+import { useSelector } from "react-redux"
+import Badge from "@material-ui/core/Badge"
+import IconButton from "@material-ui/core/IconButton"
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart"
 
 function HideOnScroll(props) {
   const { children, window } = props
@@ -19,6 +23,9 @@ function HideOnScroll(props) {
 }
 
 export default function Header(props) {
+  const cartItems = useSelector((state) => state.cart)
+  console.log(cartItems)
+
   return (
     <>
       <HideOnScroll {...props}>
@@ -66,7 +73,10 @@ export default function Header(props) {
 
             <Category>
               <Link
-                style={{ color: "unset", textDecoration: "none" }}
+                style={{
+                  color: "unset",
+                  textDecoration: "none",
+                }}
                 to="/decor"
               >
                 Decor
@@ -74,10 +84,24 @@ export default function Header(props) {
             </Category>
             <Category>
               <Link
-                style={{ color: "unset", textDecoration: "none" }}
+                style={{
+                  color: "unset",
+                  textDecoration: "none",
+                }}
                 to="/cart"
               >
-                Cart
+                <IconButton
+                  style={{
+                    marginTop: "-10px",
+                    color: "unset",
+                    textDecoration: "none",
+                  }}
+                  aria-label="cart"
+                >
+                  <Badge badgeContent={cartItems.length} color="primary">
+                    <ShoppingCartIcon />
+                  </Badge>
+                </IconButton>
               </Link>
             </Category>
           </List>
