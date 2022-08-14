@@ -5,7 +5,6 @@ import { useDispatch } from "react-redux"
 import { HashRouter as Router } from "react-router-dom"
 import { AnimatePresence } from "framer-motion"
 import Header from "./components/Header/Header"
-import Temp from "./components/Cart/Temp"
 
 const App = () => {
   const dispatch = useDispatch()
