@@ -1,13 +1,7 @@
 body {
   padding: 0;
   margin: 0;
-  background-color: #e6e6e6; /* fallback for old browsers */
-  /* background: -webkit-linear-gradient(
-    to bottom,
-    #d8d8d8,
-    #c2c2c2
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  /* background: linear-gradient(to bottom, #ececec 0%, #dadada 100%); */
+  background-color: #e6e6e6;
 }
 
 body.no-scroll {
@@ -55,11 +49,11 @@ body.no-scroll {
   width: auto;
   min-height: 200px;
   font-size: 1rem;
-  /* background-image: url("../../assets/wall.jpg");
+  background-image: url("../../assets/wall.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  color: #fff; */
+  color: #fff;
 }
 .container.fluid {
   /* max-width: 100rem; */
