@@ -116,7 +116,7 @@ export default function Header(props) {
 
 const Head = styled(Slide)`
   position: absolute;
-  color: #444444;
+  color: #fff;
   top: 0;
   /* transition: 0.6;
   margin-top: -50px;

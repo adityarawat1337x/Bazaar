@@ -15,8 +15,12 @@ body {
     #c2c2c2
   ); /* Chrome 10-25, Safari 5.1-6 */
   /* background: linear-gradient(to bottom, #ececec 0%, #dadada 100%); */
-
-  color: #1e1f13;
+  background-image: url("../../assets/wall.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  background-attachment: fixed;
+  color: #fff;
 }
 
 body.no-scroll {
