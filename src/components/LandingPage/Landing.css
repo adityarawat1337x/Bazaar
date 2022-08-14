@@ -47,7 +47,7 @@ body.no-scroll {
   padding: 0;
   position: relative;
   width: auto;
-  min-height: 200px;
+  min-height: 50px;
   font-size: 1rem;
   background-image: url("../../assets/wall.jpg");
   background-repeat: no-repeat;
@@ -105,7 +105,6 @@ main .container .row .image-container .thumbnail .frame img {
 }
 main .container .row .image-container .information {
   position: absolute;
-
   width: 100vw;
   display: flex;
   align-items: center;
@@ -117,7 +116,7 @@ main .container .row .image-container .information .location span:nth-child(2) {
   margin-left: 80px;
 }
 .single .container .top-row {
-  height: 50vh;
+  height: 40vh;
   display: flex;
   width: 100%;
   align-items: center;
@@ -159,6 +158,9 @@ main .container .row .image-container .information .location span:nth-child(2) {
 @media (max-width: 400px) {
   .single .container .top-row .top .model span {
     font-size: 2em;
+  }
+  .container {
+    height: 30vh;
   }
 }
 
