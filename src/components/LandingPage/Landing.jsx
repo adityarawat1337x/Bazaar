@@ -8,7 +8,7 @@ function Landing() {
     <>
       <Model />
       <Cont>
-        <h1>Explore new trends</h1>
+        <h1>Explore </h1>
         <Flex>
           <Wrap>
             <Card>
