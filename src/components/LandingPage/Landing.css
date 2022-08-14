@@ -15,12 +15,6 @@ body {
     #c2c2c2
   ); /* Chrome 10-25, Safari 5.1-6 */
   /* background: linear-gradient(to bottom, #ececec 0%, #dadada 100%); */
-  background-image: url("../../assets/wall.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
-  background-attachment: fixed;
-  color: #fff;
 }
 
 body.no-scroll {
@@ -66,8 +60,13 @@ body.no-scroll {
   padding: 0;
   position: relative;
   width: auto;
-  min-height: 300px;
+  min-height: 200px;
   font-size: 1rem;
+  background-image: url("../../assets/wall.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  color: #fff;
 }
 .container.fluid {
   /* max-width: 100rem; */
