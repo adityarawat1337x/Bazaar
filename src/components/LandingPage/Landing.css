@@ -62,11 +62,11 @@ body.no-scroll {
   width: auto;
   min-height: 200px;
   font-size: 1rem;
-  background-image: url("../../assets/wall.jpg");
+  /* background-image: url("../../assets/wall.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  color: #fff;
+  color: #fff; */
 }
 .container.fluid {
   /* max-width: 100rem; */
