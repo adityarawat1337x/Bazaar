@@ -10,7 +10,7 @@ import ProductPage from "./components/ProductPage/ProductPage"
 import Checkout from "./components/Payment/Checkout"
 import Temp from "./components/Cart/Temp"
 
-const Routes = () => {
+const Routes = ({ products, setProducts }) => {
   let location = useLocation()
 
   return (
@@ -23,7 +23,7 @@ const Routes = () => {
             exit={{ opacity: 0, y: 200 }}
             transition={{ duration: 0.2 }}
           >
-            <Landing />
+            <Landing products={products} setProducts={setProducts} />
           </motion.div>
         </Route>
         <Route exact path="/cart">
@@ -33,7 +33,7 @@ const Routes = () => {
             exit={{ opacity: 0, y: 200 }}
             transition={{ duration: 0.2 }}
           >
-            <CartPage />
+            <CartPage products={products} setProducts={setProducts} />
           </motion.div>
         </Route>
         <Route exact path="/history">
@@ -43,7 +43,7 @@ const Routes = () => {
             exit={{ opacity: 0, y: 200 }}
             transition={{ duration: 0.2 }}
           >
-            <OrderHistory />
+            <OrderHistory products={products} setProducts={setProducts} />
           </motion.div>
         </Route>
         <Route exact path="/new">
@@ -53,7 +53,11 @@ const Routes = () => {
             exit={{ opacity: 0, y: 200 }}
             transition={{ duration: 0.2 }}
           >
-            <ProductGrid filters={["Type", "Type", "0 - 1000"]} />
+            <ProductGrid
+              filters={["Type", "Type", "0 - 1000"]}
+              products={products}
+              setProducts={setProducts}
+            />
           </motion.div>
         </Route>
         <Route path="/product/:productId" exact>
@@ -63,7 +67,7 @@ const Routes = () => {
             exit={{ opacity: 0, y: 200 }}
             transition={{ duration: 0.2 }}
           >
-            <ProductPage />
+            <ProductPage products={products} setProducts={setProducts} />
           </motion.div>
         </Route>
         <Route path="/men" exact>
@@ -73,7 +77,11 @@ const Routes = () => {
             exit={{ opacity: 0, y: 200 }}
             transition={{ duration: 0.2 }}
           >
-            <ProductGrid filters={["Type", "Men", "0 - 1000"]} />
+            <ProductGrid
+              filters={["Type", "Men", "0 - 1000"]}
+              products={products}
+              setProducts={setProducts}
+            />
           </motion.div>
         </Route>
         <Route path="/women" exact>
@@ -83,7 +91,11 @@ const Routes = () => {
             exit={{ opacity: 0, y: 200 }}
             transition={{ duration: 0.2 }}
           >
-            <ProductGrid filters={["Type", "Women", "0 - 1000"]} />
+            <ProductGrid
+              filters={["Type", "Women", "0 - 1000"]}
+              products={products}
+              setProducts={setProducts}
+            />
           </motion.div>
         </Route>
         <Route path="/decor" exact>
@@ -93,7 +105,11 @@ const Routes = () => {
             exit={{ opacity: 0, y: 200 }}
             transition={{ duration: 0.2 }}
           >
-            <ProductGrid filters={["Type", "Home Decor", "0 - 1000"]} />
+            <ProductGrid
+              filters={["Type", "Home Decor", "0 - 1000"]}
+              products={products}
+              setProducts={setProducts}
+            />
           </motion.div>
         </Route>
         <Route path="/history" exact>
@@ -103,7 +119,7 @@ const Routes = () => {
             exit={{ opacity: 0, y: 200 }}
             transition={{ duration: 0.2 }}
           >
-            <OrderHistory />
+            <OrderHistory products={products} setProducts={setProducts} />
           </motion.div>
         </Route>
         <Route path="/cart" exact>
@@ -113,7 +129,7 @@ const Routes = () => {
             exit={{ opacity: 0, y: 200 }}
             transition={{ duration: 0.2 }}
           >
-            <CartPage />
+            <CartPage products={products} setProducts={setProducts} />
           </motion.div>
         </Route>
         <Route path="/checkout" exact>
@@ -123,11 +139,11 @@ const Routes = () => {
             exit={{ opacity: 0, y: 200 }}
             transition={{ duration: 0.2 }}
           >
-            <Checkout />
+            <Checkout products={products} setProducts={setProducts} />
           </motion.div>
         </Route>
         <Route>
-          <Temp />
+          <Temp products={products} setProducts={setProducts} />
           {/* <div>404 NOT Found</div> */}
         </Route>
       </Switch>

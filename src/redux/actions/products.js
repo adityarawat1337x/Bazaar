@@ -1,13 +1,13 @@
-import { commerce, token } from "../../lib/commerce";
+import { commerce, token } from "../../lib/commerce"
 
 export const getProducts = () => async (dispatch) => {
-  const url = new URL("https://api.chec.io/v1/products");
+  const url = new URL("https://api.chec.io/v1/products")
   let params = {
     limit: "100",
-  };
+  }
   Object.keys(params).forEach((key) =>
     url.searchParams.append(key, params[key])
-  );
+  )
 
   let headers = {
     "X-Authorization": token,
@@ -17,7 +17,7 @@ export const getProducts = () => async (dispatch) => {
     "Access-Control-Allow-Credentials": "true",
     "Access-Control-Max-Age": "1800",
     "Access-Control-Allow-Headers": "content-type",
-  };
+  }
 
   fetch(url, {
     method: "GET",
@@ -25,15 +25,14 @@ export const getProducts = () => async (dispatch) => {
   })
     .then((response) => response.json())
     .then((res) => {
-      console.log("aa gya", res);
       dispatch({
         type: "GET_PRODUCTS",
         payload: res.data,
-      });
+      })
     })
     .catch((err) => {
-      console.log(err.message);
-    });
+      console.log(err.message)
+    })
 
   // commerce.products
   //   .list({ limit: 100 })
@@ -56,4 +55,4 @@ export const getProducts = () => async (dispatch) => {
   // .catch((err) => {
   //   console.log(err.message);
   // });
-};
+}

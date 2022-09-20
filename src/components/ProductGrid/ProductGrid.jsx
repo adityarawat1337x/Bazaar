@@ -1,17 +1,17 @@
-import React from "react";
-import styled from "styled-components";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import { addToCart } from "../../redux/actions/cart";
-import Spinner from "../../lib/Spinner";
-import { AnimatePresence, motion } from "framer-motion";
-import FilterBar from "./FilterBar";
-import NoData from "./NoData";
+import React from "react"
+import styled from "styled-components"
+import { useDispatch } from "react-redux"
+import { Link } from "react-router-dom"
+import { addToCart } from "../../redux/actions/cart"
+import Spinner from "../../lib/Spinner"
+import { AnimatePresence, motion } from "framer-motion"
+import FilterBar from "./FilterBar"
+import NoData from "./NoData"
 
 const ProductGrid = (props) => {
-  const dispatch = useDispatch();
-
-  const [products, setProducts] = React.useState([]);
+  const { products, setProducts } = props
+  const dispatch = useDispatch()
+  console.log(products)
 
   return (
     <GridContainer
@@ -38,7 +38,7 @@ const ProductGrid = (props) => {
               transition={{ duration: 0.5 }}
             >
               <AnimatePresence>
-                {products.map((product) => (
+                {products.map((product, index) => (
                   <Card key={product.id}>
                     <Link
                       to={`/product/${product.id}`}
@@ -54,7 +54,7 @@ const ProductGrid = (props) => {
                         alt=""
                       />
                     </Link>
-                    <h2>{product.name}</h2>
+                    <h2>{product.name + " (" + (index + 1) + ")"}</h2>
                     <Button
                       as={motion.button}
                       initial={{ opacity: 0 }}
@@ -77,8 +77,8 @@ const ProductGrid = (props) => {
         <Spinner />
       )}
     </GridContainer>
-  );
-};
+  )
+}
 
 const GridContainer = styled(motion.div)`
   margin-top: 100px;
@@ -86,7 +86,7 @@ const GridContainer = styled(motion.div)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`;
+`
 
 // const FilterBar = styled(motion.div)`
 //   background-color: #d3d3d396;
@@ -101,7 +101,7 @@ const Grid = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 2em;
-`;
+`
 
 const Card = styled(motion.div)`
   display: block;
@@ -112,14 +112,14 @@ const Card = styled(motion.div)`
   height: 100%;
   justify-self: center;
   margin: auto;
-`;
+`
 
 const Image = styled(motion.img)`
   object-fit: cover;
   height: auto;
   min-width: 100px;
   max-width: 100%;
-`;
+`
 
 const Button = styled(motion.button)`
   min-width: 50px;
@@ -133,6 +133,6 @@ const Button = styled(motion.button)`
   border-radius: 5px;
   bottom: 0;
   cursor: pointer;
-`;
+`
 
-export default ProductGrid;
+export default ProductGrid
