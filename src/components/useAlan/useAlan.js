@@ -57,6 +57,8 @@ export default function useAlan() {
 
     setAlan(
       alanBtn({
+        top: "15px",
+        left: "15px",
         key:
           "76eb2cce8e7ff867f79a569330b940f02e956eca572e1d8b807a3e2338fdd0dc/prod",
         onCommand: ({ command, payload }) => {
